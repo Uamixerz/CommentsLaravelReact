@@ -1,14 +1,10 @@
 <?php
 
 namespace App\Services\Image;
-
 use App\Models\CommentFile;
-use Illuminate\Support\Facades\Storage;
-use Imagick;
 
 class Service
 {
-
     function destroy($filename)
     {
 
