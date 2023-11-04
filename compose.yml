@@ -49,8 +49,8 @@ services:
       context: .
       dockerfile: ./infra/docker/mysql/Dockerfile
     ports:
-      - target: 3308
-        published: ${DB_PUBLISHED_PORT:-3308}
+      - target: 3306
+        published: ${DB_PUBLISHED_PORT:-3306}
         protocol: tcp
         mode: host
     configs:
@@ -78,7 +78,7 @@ services:
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
-      - REACT_APP_BASE_URL=https://18.185.103.155:80
+      - REACT_APP_BASE_URL=localhost
     command: npm start
 
 
