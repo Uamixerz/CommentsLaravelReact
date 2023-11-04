@@ -17,8 +17,9 @@ Build a simple laravel development environment with docker-compose. Compatible w
 
 ```bash
 $ docker compose build
+$ nano compose.yml // Змінити в frontend REACT_APP_BASE_URL=http://35.158.25.4:80/ \(на ваш ip)
 $ docker compose up -d
-$ docker compose exec app php composer install
+$ docker compose exec app composer install
 $ cd message-test-laravel
 $ cp .env.example .env
 $ cd ..
