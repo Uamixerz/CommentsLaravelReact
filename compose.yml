@@ -18,8 +18,8 @@ services:
     ports:
       - 8007:8007
     environment:
-      - APP_DEBUG=${APP_DEBUG:-true}
-      - APP_ENV=${APP_ENV:-local}
+      - APP_DEBUG=${APP_DEBUG:-false}
+      - APP_ENV=${APP_ENV:-production}
       - APP_URL=${APP_URL:-http://localhost}
       - LOG_CHANNEL=${LOG_CHANNEL:-stderr}
       - LOG_STDERR_FORMATTER=${LOG_STDERR_FORMATTER:-Monolog\Formatter\JsonFormatter}
@@ -29,6 +29,7 @@ services:
       - DB_DATABASE=${DB_DATABASE:-commentsdb}
       - DB_USERNAME=${DB_USERNAME:-phper}
       - DB_PASSWORD=${DB_PASSWORD:-secret}
+      - JWT_SECRET=TE£uk5xa>I/?A4.+o>2ZayR=C8i-<0{m
 
   web:
     build:
@@ -43,6 +44,9 @@ services:
       - type: bind
         source: ./message-test-laravel
         target: /workspace
+      - type: bind
+        source: ./message-test-react-front
+        target: /reactspace
 
   db:
     build:

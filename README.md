@@ -25,7 +25,7 @@ $ cp .env.example .env
 $ cd ..
 $ docker compose exec app php artisan key:generate
 $ docker compose exec app php artisan storage:link
-$ docker compose exec app chmod -R 777 storage bootstrap/cache
+$ docker compose exec app chmod -R 777 /workspace/public/uploads
 $ docker compose exec app php artisan migrate
 ```
 

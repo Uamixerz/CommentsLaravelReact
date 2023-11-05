@@ -22,10 +22,10 @@ const CommentItem = ({comment, refreshComments}) => {
                             {comment.user.homepage && (<a className='link-info' href={comment.user.homepage}> - MyHomePage</a>)}
 
                         </p>
-                        <a className="btn" onClick={()=>setShowSendAnswer(!showSendAnswer)}>
+                        <button className="btn" onClick={()=>setShowSendAnswer(!showSendAnswer)}>
                             <i className="fas fa-reply fa-xs"></i>
                             <span className="small"> Відповісти</span>
-                        </a>
+                        </button>
                     </div>
                     <p className="small mb-0" dangerouslySetInnerHTML={{ __html: comment.text }}>
                     </p>

@@ -17,10 +17,9 @@ const FileItem = ({file}) => {
                     </div>
                 </div>
                 {file.url.endsWith('txt') ? (
-                    <img src={APP_ENV.BASE_URL + '/uploads/txtFile.png'} alt={'Preview image'}/>
+                    <img src={APP_ENV.BASE_URL + '/uploads/txtFile.png'} alt="Попередній перегляд файлу"/>
                 ) : (
-                    <img style={{maxWidth: '320px'}} src={APP_ENV.BASE_URL + '/uploads/' + file.url}
-                         alt={'Preview image'}/>
+                    <img style={{maxWidth: '320px'}} src={APP_ENV.BASE_URL + '/uploads/' + file.url} alt="Попередній перегляд файлу"/>
                 )}
                 <p className='m-0'>{file.url}</p>
             </div>

@@ -119,10 +119,11 @@ class AuthController extends Controller
         try {
             $data = $request->validated();
             $fileName = $this->service->storeUserImage($request->file('image'));
-
             $user = User::create(array_merge(
                 $data,
-                ['password' => bcrypt($request->password), 'image'=>$fileName]
+                ['password' => bcrypt($request->password),
+                    'image'=>$fileName,
+                    'homepage'=>$request->input('homepage') ?? '']
             ));
 
             return response()->json([

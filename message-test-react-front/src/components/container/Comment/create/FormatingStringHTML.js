@@ -1,5 +1,3 @@
-import DOMPurify from 'dompurify';
-
 function checkPaternA(input) {
     //                        1   2        3    4                5    6      7
     let pattern = /(&lt;)(a)(\s[^>]*)?(>)(?!.*?&lt;a\b)(.*?)(&lt;)(\/a>)/g;
