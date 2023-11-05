@@ -22,7 +22,7 @@ const CommentCreate = ({onSubmit}) => {
     });
     const onSubmitFormikData = (values) => {
         values.text = formatString(values.text);
-        console.log("Formik send ", values);
+        //console.log("Formik send ", values);
         setSendToServer(true);
         http.post('api/comments', values, {
             headers: {
@@ -30,13 +30,13 @@ const CommentCreate = ({onSubmit}) => {
             },
         })
             .then(resp => {
-                console.log(values, resp);
+                //console.log(values, resp);
                 onSubmit();
                 setSendToServer(false);
                 formik.setValues(initValues);
             })
             .catch(bad => {
-                console.log("Bad request", bad);
+                //console.log("Bad request", bad);
                 setSendToServer(false);
             })
     }

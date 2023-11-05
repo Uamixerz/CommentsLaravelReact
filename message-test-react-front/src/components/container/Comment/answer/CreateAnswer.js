@@ -22,7 +22,7 @@ const CreateAnswer = ({freshComment, parent_id, hideAnswer}) => {
     });
     const onSubmitFormikData = (values) => {
         values.text = formatString(values.text);
-        console.log("Formik send answer", values);
+        ////console.log("Formik send answer", values);
         setSendToServer(true);
         http.post('api/comments', values, {
             headers: {
@@ -30,14 +30,14 @@ const CreateAnswer = ({freshComment, parent_id, hideAnswer}) => {
             },
         })
             .then(resp => {
-                console.log(values, resp);
+                ////console.log(values, resp);
                 freshComment();
                 hideAnswer();
                 setSendToServer(false);
                 formikAnswer.setValues(initValuesAnswer);
             })
             .catch(bad => {
-                console.log("Bad request", bad);
+               // //console.log("Bad request", bad);
                 setSendToServer(false);
             })
     };

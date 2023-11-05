@@ -21,7 +21,7 @@ const LoginPage = () => {
     });
 
     const onSubmitFormikData = (values) => {
-        console.log("Formik send ", values);
+        //console.log("Formik send ", values);
         setSendToServer(true);
         http.post('api/auth/login', values, {
             headers: {
@@ -45,7 +45,7 @@ const LoginPage = () => {
                 });
             })
             .catch(bad => {
-                console.log("Bad request", bad);
+                //console.log("Bad request", bad);
             })
         setSendToServer(false);
     }

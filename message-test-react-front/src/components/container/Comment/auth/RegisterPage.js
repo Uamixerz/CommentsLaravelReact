@@ -22,7 +22,7 @@ const RegisterPage = ({changeToLogin}) => {
         image: yup.mixed().required("Виберіть фото"),
     });
     const onSubmitFormikData = async (values) => {
-        console.log("Formik send register ", values);
+        //console.log("Formik send register ", values);
 
         setSendToServer(true);
         await http.post('api/auth/register', values, {
@@ -31,13 +31,13 @@ const RegisterPage = ({changeToLogin}) => {
             },
         })
             .then(resp => {
-                console.log(values, resp);
+                //console.log(values, resp);
                 changeToLogin();
                 formik.setValues(initValues);
                 setSendToServer(false);
             })
             .catch(bad => {
-                console.log("Bad request", bad);
+                //console.log("Bad request", bad);
                 setSendToServer(false);
             })
 

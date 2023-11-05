@@ -4,25 +4,25 @@ import http from "../../../../http";
 const InputFile = ({formik,parent_id}) => {
     const uploadToServer = (file) => {
 
-            console.log('file', file);
+            //console.log('file', file);
             http.post('api/file', file, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             })
                 .then(resp => {
-                    console.log('file', resp);
+                    //console.log('file', resp);
                     let updatedFiles = [...formik.values.files];
                     updatedFiles.push(resp.data);
                     formik.setFieldValue('files', updatedFiles);
-                    console.log('values', formik.values);
+                    //console.log('values', formik.values);
                 })
                 .catch(bad => {
-                    console.log("Bad request", bad);
+                    //console.log("Bad request", bad);
                 })
     };
     const uploadFile = (event) => {
-        console.log('files', event.target.files[0]);
+        //console.log('files', event.target.files[0]);
         var file = event.target.files[0];
         if (file.type === "text/plain") {
             if (file.size > 102400) {

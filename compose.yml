@@ -15,8 +15,6 @@ services:
       - type: bind
         source: ./message-test-laravel
         target: /workspace
-    ports:
-      - 8007:8007
     environment:
       - APP_DEBUG=${APP_DEBUG:-false}
       - APP_ENV=${APP_ENV:-production}
@@ -44,10 +42,6 @@ services:
       - type: bind
         source: ./message-test-laravel
         target: /workspace
-      - type: bind
-        source: ./message-test-react-front
-        target: /reactspace
-
   db:
     build:
       context: .
@@ -84,5 +78,7 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - REACT_APP_BASE_URL=http://35.158.25.4:80/
     command: npm start
+
+
 
 

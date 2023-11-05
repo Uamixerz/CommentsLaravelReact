@@ -8,11 +8,11 @@ const CommentShow = ({shouldUpdate, refreshComments}) => {
     const [urlCommentGet, setUrlCommentGet] = useState('api/comments');
     useEffect(() => {
         http.get(`${urlCommentGet}`).then(resp => {
-            console.log(resp.data);
+            //console.log(resp.data);
             setPagination(resp.data.meta);
             setCommentData(resp.data.data);
         }).catch(bad => {
-            console.log('bad request', bad);
+            //console.log('bad request', bad);
         });
     }, [shouldUpdate,urlCommentGet]);
 
