@@ -20,11 +20,15 @@ const CommentShow = ({shouldUpdate, refreshComments}) => {
     const [sortOrder, setSortOrder] = useState('asc'); // або 'desc' для сортування за спаданням
 
     const handleSort = (field) => {
+        console.log(commentData);
         const sortedData = commentData.slice().sort((a, b) => {
-            if (a[field] < b[field]) {
+            const fieldA = getField(a, field);
+            const fieldB = getField(b, field);
+
+            if (fieldA < fieldB) {
                 return sortOrder === 'asc' ? -1 : 1;
             }
-            if (a[field] > b[field]) {
+            if (fieldA > fieldB) {
                 return sortOrder === 'asc' ? 1 : -1;
             }
             return 0;
@@ -34,15 +38,23 @@ const CommentShow = ({shouldUpdate, refreshComments}) => {
         setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     };
 
+    const getField = (object, field) => {
+        if (field === 'user.name' || field === 'user.email') {
+            const nestedField = field.split('.');
+            return object[nestedField[0]][nestedField[1]];
+        }
+        return object[field];
+    };
+
 
     return (
         <div className="py-4">
             <div className="card">
                 <div className="card-body p-4">
                     <h4 className="text-center mb-4 pb-2">Коментарі</h4>
-                    <button className="btn btn-outline-primary me-2 mb-4" onClick={() => handleSort('user_name')}>Sort by Name</button>
+                    <button className="btn btn-outline-primary me-2 mb-4" onClick={() => handleSort('user.name')}>Sort by Name</button>
                     <button className="btn btn-outline-warning me-2 mb-4" onClick={() => handleSort('text')}>Sort by Text</button>
-                    <button className="btn btn-outline-success me-2 mb-4" onClick={() => handleSort('email')}>Sort by Email</button>
+                    <button className="btn btn-outline-success me-2 mb-4" onClick={() => handleSort('user.email')}>Sort by Email</button>
                     <button className="btn btn-outline-danger me-2 mb-4" onClick={() => handleSort('created_at')}>Sort by Date</button>
                     {commentData && (
                                 commentData.map(comment => (

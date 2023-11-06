@@ -10,6 +10,9 @@ use App\Models\CommentFile;
 
 class CommentController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth:api', ['except' => ['index']]);
+    }
     /**
      * @OA\Get(
      *     tags={"Comment"},

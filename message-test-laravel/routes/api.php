@@ -25,6 +25,7 @@ Route::group([
     'prefix' => 'file',
 ], function ($router) {
     Route::post('/', [\App\Http\Controllers\File\FileController::class, 'store']);
+    Route::get('/text/{id}', [\App\Http\Controllers\File\FileController::class, 'getTxt']);
 });
 
 Route::group([
