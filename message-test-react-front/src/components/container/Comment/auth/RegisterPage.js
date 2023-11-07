@@ -16,10 +16,26 @@ const RegisterPage = ({changeToLogin}) => {
     };
 
     const createSchema = yup.object({
-        email: yup.string().required("Введіть пошту"),
-        name: yup.string().required("Введіть ім'я"),
-        password: yup.number().required("Введіть пароль"),
-        image: yup.mixed().required("Виберіть фото"),
+        email: yup.string()
+            .max(100, "Email не може містити більше 100 символів")
+            .email("Введіть дійсну адресу електронної пошти")
+            .required("Введіть пошту"),
+
+        name: yup.string()
+            .min(2, "Ім'я повинно містити принаймні 2 символи")
+            .max(100, "Ім'я повинно містити не більше 100 символів")
+            .required("Введіть ім'я"),
+
+        password: yup.number()
+            .min(100000, 'Пароль повинен містити щонайменше 6 цифр')
+            .required("Введіть пароль"),
+
+        image: yup.mixed()
+            .test("fileSize", "Розмір файлу має бути менше 30 МБ", (value) => {
+                if (!value) return true; // Перевіряємо, чи файл існує
+                return value && value.size <= 30000000; // Перевіряємо розмір файлу
+            })
+            .required("Виберіть фото"),
     });
     const onSubmitFormikData = async (values) => {
         //console.log("Formik send register ", values);

@@ -16,8 +16,12 @@ const LoginPage = () => {
     };
 
     const createSchema = yup.object({
-        email: yup.string().required("Не вірний email"),
-        password: yup.number().required("Не вірний пароль")
+        email: yup.string()
+            .email("Введіть дійсну адресу електронної пошти")
+            .required("Не вірний email"),
+        password: yup.number()
+            .min(100000, 'Пароль повинен містити щонайменше 6 цифр')
+            .required("Не вірний пароль")
     });
 
     const onSubmitFormikData = (values) => {
